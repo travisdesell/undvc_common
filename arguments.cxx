@@ -1,6 +1,7 @@
 #include <sstream>
 #include <vector>
 #include <iostream>
+#include <cstdlib>
 
 using namespace std;
 
@@ -28,7 +29,7 @@ bool get_argument(vector<string> arguments, string argument, bool required, stri
 
     if (required && !found) {
         cerr << "ERROR: argument '" << argument << "' required and not found." << endl;
-        exit(0);
+        exit(1);
     }
 
     if (found) {
@@ -55,7 +56,7 @@ bool get_argument_vector(vector<string> arguments, string argument, bool require
 
     if (required && !found) {
         cerr << "ERROR: argument '" << argument << "' required and not found." << endl;
-        exit(0);
+        exit(1);
     }
 
     if (found) {
