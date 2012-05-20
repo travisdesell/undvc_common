@@ -9,12 +9,19 @@
 using namespace std;
 
 template <typename T>  
-vector<T>* string_to_vector(string s, T (*convert)(const char*) );
+void string_to_vector(string s, T (*convert)(const char*), vector<T> &v);
 
 template <typename T>
 string vector_to_string(const vector<T> *v);
 
 template <typename T>
 string vector_to_string(const vector<T> &v);
+
+
+template <typename T>
+void string_to_vector_2d(string s, T (*convert)(const char*), vector< vector<T> > &v);
+
+template <typename T>
+string vector_2d_to_string(const vector< vector<T> > &v);
 
 #endif
