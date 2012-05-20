@@ -4,6 +4,8 @@
 #include <cstring>
 #include <string>
 
+#include "stdint.h"
+
 using namespace std;
 
 template <typename T>  
