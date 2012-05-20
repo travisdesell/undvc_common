@@ -5,6 +5,8 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
+
 string get_file_as_string(string file_path) throw (int);
 
 #endif

@@ -1,8 +1,14 @@
 #include <cstdlib>
 #include <iostream>
+#include <sstream>
+#include <fstream>
 #include <string>
 
+#include "stdint.h"
+
 #include "file_io.hxx"
+
+using namespace std;
 
 string get_file_as_string(string file_path) throw (int) {
     //read the entire contents of the file into a string
@@ -12,40 +18,18 @@ string get_file_as_string(string file_path) throw (int) {
         throw 1;
     }
 
-    std::string fc;
+    string fc;
 
-    sites_file.seekg(0, std::ios::end);   
+    sites_file.seekg(0, ios::end);   
     fc.reserve(sites_file.tellg());
-    sites_file.seekg(0, std::ios::beg);
+    sites_file.seekg(0, ios::beg);
 
-    fc.assign((std::istreambuf_iterator<char>(sites_file)), std::istreambuf_iterator<char>());
+    fc.assign((istreambuf_iterator<char>(sites_file)), istreambuf_iterator<char>());
 
-//   std::remove( failed_sets.begin(), failed_sets.end(), '\r' );
-    while (target < failed_sets.size()) {
-        while (failed_sets[target] == '\r') {
-            target++;
-        }
-
-        if (failed_sets[target] == '\n') {
-            failed_sets[current] = ' ';
-        } else {
-            failed_sets[current] = failed_sets[target];
-        }
-
-        current++;
-        target++;
+    ostringstream oss;
+    for (uint32_t i = 0; i < fc.size(); i++) {
+        if (fc[i] != '\r') oss << fc[i];
     }
-    failed_sets.resize(current);
 
-    cout << "FAILED SETS WAS: '" << failed_sets << "'" << endl;
-
-    while (failed_sets[0] == ' ') failed_sets.erase(0, 1);
-    while (failed_sets[ failed_sets.size() - 1 ] == ' ') failed_sets.erase( failed_sets.size() - 1, 1);
-
-    cout << "FAILED SETS  IS: '" << failed_sets << "'" << endl;
-
-
-    return fc;
+    return oss.str();
 }
-
-
