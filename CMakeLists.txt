@@ -6,4 +6,11 @@ set (UNDVC_COMMON_VERSION_MINOR 1)
  
 set(CMAKE_CXX_FLAGS "-g -Wall -O3 -funroll-loops -ftree-vectorize -msse3")
 
+find_package(Boost)
+
+include_directories(
+    ${Boost_INCLUDE_DIR}
+)
+
 add_library(undvc_common vector_io arguments)
+target_link_libraries(undvc_common ${Boost_LIBRARIES})
