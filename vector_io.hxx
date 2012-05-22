@@ -9,7 +9,7 @@
 using namespace std;
 
 template <typename T>  
-void string_to_vector(string s, T (*convert)(const char*), vector<T> &v);
+void string_to_vector(string s, vector<T> &v);
 
 template <typename T>
 string vector_to_string(const vector<T> *v);

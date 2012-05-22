@@ -6,6 +6,8 @@
 
 #include "stdint.h"
 
+#include <boost/algorithm/string.hpp>
+
 using namespace std;
 
 template <typename T>  
@@ -43,19 +45,28 @@ string vector_2d_to_string(const vector< vector<T> > &v) {
     return oss.str();
 }
 
-
 template <typename T>  
-void string_to_vector(string s, T (*convert)(const char*), vector<T> &v) { 
+void string_to_vector(string s, vector<T> &v) { 
     v.clear();
 
-    const char *cstr = s.c_str();
-    char *pch = strtok((char*)cstr, "[], ");
-    while (pch != NULL) {
-        //cout << "element: " << pch << endl;
-        v.push_back( (*convert)(pch) );
+    vector<std::string> split_string;
+    boost::split(split_string, s, boost::is_any_of("[], "));
 
-        pch = strtok(NULL, "[], ");
-    }   
+    v.resize(split_string.size());
+
+    for (uint32_t i = 0; i < split_string.size(); i++) {
+        stringstream(split_string[i]) >> v[i];
+    }
+}
+
+template <>
+void string_to_vector(string s, vector<string> &v) {
+    v.clear();
+
+    vector<std::string> split_string;
+    boost::split(split_string, s, boost::is_any_of("[], "));
+
+    v.assign(split_string.begin(), split_string.end());
 }
 
 template <typename T>
@@ -85,4 +96,7 @@ template
 string vector_to_string(const vector<double> &v);
 
 template
-void string_to_vector(string s, double (*convert)(const char*), vector<double> &v);
+void string_to_vector(string s, vector<double> &v);
+
+template
+string vector_to_string(const vector<string> &v);
