@@ -9,4 +9,8 @@ using namespace std;
 
 string get_file_as_string(string file_path) throw (int);
 
+#ifdef _BOINC_
+void copy_file_to_download_dir(string filename);
+#endif
+
 #endif
