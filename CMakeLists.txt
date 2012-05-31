@@ -10,7 +10,7 @@ set(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} /opt/local/lib)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake/Modules/")
 
-find_package(Boost)
+find_package(Boost COMPONENTS system filesystem)
 
 if (Boost_FOUND)
     include_directories(
@@ -36,6 +36,8 @@ if (BOINC_FOUND AND MYSQL_FOUND)
 
     add_definitions( -D_BOINC_ )
 endif (BOINC_FOUND AND MYSQL_FOUND)
+
+link_directories(${Boost_LIBRARY_DIRS})
 
 add_library(undvc_common vector_io arguments file_io)
 
