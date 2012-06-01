@@ -54,21 +54,23 @@ string get_file_as_string(string file_path) throw (int) {
 void copy_file_to_download_dir(string filename) {
     char path[256];
 
+    string short_name = filename.substr(filename.find_last_of('/') + 1);
+
     if ( !boost::filesystem::exists( filename ) ) { 
         log_messages.printf(MSG_CRITICAL, "input filename '%s' does not exist, cannot copy to download directory.\n", filename.c_str());
         exit(1);
     }   
 
-    int retval = config.download_path(filename.c_str(), path);
+    int retval = config.download_path( short_name.c_str(), path );
     if (retval) {
-        log_messages.printf(MSG_CRITICAL, "can't get download path for file '%s', error: %s\n", filename.c_str(), boincerror(retval));
+        log_messages.printf(MSG_CRITICAL, "can't get download path for file '%s', error: %s\n", short_name.c_str(), boincerror(retval));
         exit(1);
     }   
 
     if ( boost::filesystem::exists(path) ) { 
-        log_messages.printf(MSG_CRITICAL, "input file '%s' already exists in downlaod directory hierarchy as '%s', not copying.\n", filename.c_str(), path);
+        log_messages.printf(MSG_CRITICAL, "input file '%s' already exists in downlaod directory hierarchy as '%s', not copying.\n", short_name.c_str(), path);
     } else {
-        log_messages.printf(MSG_CRITICAL, "input file '%s' does not exist in downlaod directory hierarchy, copying to '%s'\n", filename.c_str(), path);
+        log_messages.printf(MSG_CRITICAL, "input file '%s' does not exist in downlaod directory hierarchy, copying to '%s'\n", short_name.c_str(), path);
 
         //open the first filename and copy it to the target here
         std::ifstream src(filename.c_str());

@@ -52,10 +52,12 @@ void string_to_vector(string s, vector<T> &v) {
     vector<std::string> split_string;
     boost::split(split_string, s, boost::is_any_of("[], "));
 
-    v.resize(split_string.size());
-
     for (uint32_t i = 0; i < split_string.size(); i++) {
-        stringstream(split_string[i]) >> v[i];
+        if (split_string[i].size() > 0) {
+            T value;
+            stringstream(split_string[i]) >> value;
+            v.push_back(value);
+        }
     }
 }
 
@@ -66,7 +68,11 @@ void string_to_vector(string s, vector<string> &v) {
     vector<std::string> split_string;
     boost::split(split_string, s, boost::is_any_of("[], "));
 
-    v.assign(split_string.begin(), split_string.end());
+    for (uint32_t i = 0; i < split_string.size(); i++) {
+        if (split_string[i].size() > 0) {
+            v.push_back(split_string[i]);
+        }
+    }
 }
 
 template <typename T>
