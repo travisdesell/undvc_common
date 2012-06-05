@@ -90,6 +90,12 @@ string vector_to_string(const vector<T> *v) {
 }
 
 template
+string vector_to_string(const vector<bool> *v);
+
+template
+string vector_to_string(const vector<bool> &v);
+
+template
 string vector_to_string(const vector<double> *v);
 
 template
