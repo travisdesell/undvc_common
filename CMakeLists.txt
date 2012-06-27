@@ -39,7 +39,7 @@ endif (BOINC_FOUND AND MYSQL_FOUND)
 
 link_directories(${Boost_LIBRARY_DIRS})
 
-add_library(undvc_common vector_io arguments file_io)
+add_library(undvc_common vector_io arguments file_io parse_xml)
 
 if (Boost_FOUND)
     target_link_libraries(undvc_common ${Boost_LIBRARIES})
