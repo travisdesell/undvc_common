@@ -1,6 +1,3 @@
-#ifndef FGDO_UTIL_HPP
-#define FGDO_UTIL_HPP
-
 #include <iostream>
 #include <string>
 #include <vector>
@@ -40,8 +37,18 @@ T parse_xml(string xml, const char tag[]) throw (string) {
     }
 }
 
-template <>
+template
 double parse_xml<double> (string xml, const char tag[]) throw (string);
+
+template
+uint64_t parse_xml<uint64_t> (string xml, const char tag[]) throw (string);
+
+template
+uint32_t parse_xml<uint32_t> (string xml, const char tag[]) throw (string);
+
+template
+int32_t parse_xml<int32_t> (string xml, const char tag[]) throw (string);
+
 
 template <>
 string parse_xml<string>(string xml, const char tag[]) throw (string) {
@@ -96,4 +103,5 @@ void parse_xml_vector(string xml, const char tag[], vector<T> &result) throw (st
     }
 }
 
-#endif
+template
+void parse_xml_vector(string xml, const char tag[], vector<double> &result) throw (string);
