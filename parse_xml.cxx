@@ -23,7 +23,7 @@ T parse_xml(string xml, const char tag[]) throw (string) {
     int length = end - start;
 
     if (length > 0) {
-//        cout << "parsing: " << tag << " from '" << xml.substr(start, length) << "'" << endl;
+//        cout << "parsing: " << tag << " from '" << xml.substr(start, length) << "' starting at " << start << " and ending at " << end << endl;
 
         istringstream data( xml.substr(start, length) );
         T value;
@@ -37,17 +37,13 @@ T parse_xml(string xml, const char tag[]) throw (string) {
     }
 }
 
-template
-double parse_xml<double> (string xml, const char tag[]) throw (string);
+template double parse_xml<double>(string xml, const char tag[]) throw (string);
 
-template
-uint64_t parse_xml<uint64_t> (string xml, const char tag[]) throw (string);
+template uint64_t parse_xml<uint64_t>(string xml, const char tag[]) throw (string);
 
-template
-uint32_t parse_xml<uint32_t> (string xml, const char tag[]) throw (string);
+template uint32_t parse_xml<uint32_t>(string xml, const char tag[]) throw (string);
 
-template
-int32_t parse_xml<int32_t> (string xml, const char tag[]) throw (string);
+template int32_t parse_xml<int32_t>(string xml, const char tag[]) throw (string);
 
 
 template <>
