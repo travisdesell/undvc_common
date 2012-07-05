@@ -99,6 +99,9 @@ template
 string vector_to_string(const vector<bool> *v);
 
 template
+string vector_to_string(const vector<uint32_t> &v);
+
+template
 string vector_to_string(const vector<bool> &v);
 
 template
@@ -112,3 +115,6 @@ void string_to_vector(string s, vector<double> &v);
 
 template
 string vector_to_string(const vector<string> &v);
+
+template
+string vector_2d_to_string(const vector< vector<double> > &v);
