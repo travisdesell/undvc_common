@@ -11,37 +11,41 @@ IF (BOINC_INCLUDE_DIR)
 ENDIF (BOINC_INCLUDE_DIR)
 
 FIND_PATH(BOINC_INCLUDE_DIR config.h
-    /boinc/src/boinc/
+    /boinc/src/boinc
+    /home/tdesell/boinc
 )
 
 FIND_LIBRARY(BOINC_LIBRARY
     NAMES boinc
-    PATHS /boinc/src/boinc
+    PATHS /boinc/src/boinc /home/tdesell/boinc
     PATH_SUFFIXES lib
 )
+
 FIND_LIBRARY(BOINC_CRYPT_LIBRARY
     NAMES boinc_crypt
-    PATHS /boinc/src/boinc
+    PATHS /boinc/src/boinc /home/tdesell/boinc
     PATH_SUFFIXES lib
 )
+
 FIND_LIBRARY(BOINC_API_LIBRARY
     NAMES boinc_api
-    PATHS /boinc/src/boinc
+    PATHS /boinc/src/boinc /home/tdesell/boinc
     PATH_SUFFIXES api
 )
 
 FIND_LIBRARY(BOINC_SCHED_LIBRARY
     NAMES sched
-    PATHS /boinc/src/boinc
+    PATHS /boinc/src/boinc /home/tdesell/boinc
     PATH_SUFFIXES sched
 )
 
-#MESSAGE(STATUS "boinc names ${BOINC_LIBRARY} ${BOINC_CRYPT_LIBRARY} ${BOINC_API_LIBRARY}.")
+MESSAGE(STATUS "boinc names ${BOINC_LIBRARY} ${BOINC_CRYPT_LIBRARY} ${BOINC_API_LIBRARY} ${BOINC_SCHED_LIBRARY}.")
 
 IF (BOINC_INCLUDE_DIR AND BOINC_LIBRARY)
     add_definitions( -D_BOINC_ )
     SET(BOINC_FOUND TRUE)
     SET( BOINC_LIBRARIES ${BOINC_SCHED_LIBRARY} ${BOINC_LIBRARY} ${BOINC_API_LIBRARY} ${BOINC_CRYPT_LIBRARY})
+    #SET( BOINC_LIBRARIES /home/tdesell/boinc/sched/libsched.a /home/tdesell/boinc/lib/libboinc.a /home/tdesell/boinc/api/libboinc_api.a /home/tdesell/boinc/lib/libboinc_crypt.a )
 ELSE (BOINC_INCLUDE_DIR AND BOINC_LIBRARY)
     SET(BOINC_FOUND FALSE)
     SET( BOINC_LIBRARIES )

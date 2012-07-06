@@ -95,14 +95,10 @@ string vector_to_string(const vector<T> *v) {
     return vector_to_string(*v);
 }
 
-template
-string vector_to_string(const vector<double> *v);
+template string vector_to_string<uint64_t>(const vector<uint64_t> &v);
+template string vector_to_string(const vector<double> *v);
+template string vector_to_string(const vector<double> &v);
+template string vector_to_string(const vector<string> &v);
 
-template
-string vector_to_string(const vector<double> &v);
-
-template
-void string_to_vector(string s, vector<double> &v);
-
-template
-string vector_to_string(const vector<string> &v);
+template void string_to_vector<double>(string s, vector<double> &v);
+template void string_to_vector<uint64_t>(string s, vector<uint64_t> &v);
