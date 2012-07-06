@@ -95,10 +95,19 @@ string vector_to_string(const vector<T> *v) {
     return vector_to_string(*v);
 }
 
+template string vector_to_string<bool>(const vector<bool> *v);
+template string vector_to_string<bool>(const vector<bool> &v);
+template string vector_to_string<uint32_t>(const vector<uint32_t> *v);
+template string vector_to_string<uint32_t>(const vector<uint32_t> &v);
+template string vector_to_string<uint64_t>(const vector<uint64_t> *v);
 template string vector_to_string<uint64_t>(const vector<uint64_t> &v);
 template string vector_to_string(const vector<double> *v);
 template string vector_to_string(const vector<double> &v);
+template string vector_to_string(const vector<string> *v);
 template string vector_to_string(const vector<string> &v);
+
+template string vector_2d_to_string(const vector< vector<double> > &v);
 
 template void string_to_vector<double>(string s, vector<double> &v);
 template void string_to_vector<uint64_t>(string s, vector<uint64_t> &v);
+
