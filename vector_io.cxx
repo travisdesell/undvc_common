@@ -3,10 +3,22 @@
 #include <sstream>
 #include <cstring>
 #include <string>
+#include <cstdlib>
+#include <stdexcept>
 
 #include "stdint.h"
 
 #include <boost/algorithm/string.hpp>
+
+#ifdef BOOST_NO_EXCEPTIONS
+namespace boost
+{
+	extern inline void throw_exception(std::exception const& e) {
+		std::cerr << "uncaught exception: " << e.what() << std::endl;
+		std::exit(1);
+	}
+}
+#endif
 
 using namespace std;
 
