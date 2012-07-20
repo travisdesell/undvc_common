@@ -7,6 +7,7 @@
 #include <stdexcept>
 
 #include "stdint.h"
+#include "vector_io.hxx"
 
 #include <boost/algorithm/string.hpp>
 
