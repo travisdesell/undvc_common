@@ -13,6 +13,7 @@ ENDIF (OpenCV_INCLUDE_DIR)
 FIND_PATH(OpenCV_INCLUDE_DIR opencv.hpp
     /opt/local/include
     /opt/local/include/opencv2
+    /usr/include/opencv2
 )
 MESSAGE(STATUS "OpenCV include directory: ${OpenCV_INCLUDE_DIR}")
 
