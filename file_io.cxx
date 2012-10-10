@@ -68,7 +68,7 @@ void copy_file_to_download_dir(string filename) {
     }   
 
     if ( boost::filesystem::exists(path) ) { 
-        log_messages.printf(MSG_CRITICAL, "input file '%s' already exists in downlaod directory hierarchy as '%s', not copying.\n", short_name.c_str(), path);
+        log_messages.printf(MSG_CRITICAL, "\033[1minput file '%s' already exists in download directory hierarchy as '%s', not copying.\033[0m\n", short_name.c_str(), path);
     } else {
         log_messages.printf(MSG_CRITICAL, "input file '%s' does not exist in downlaod directory hierarchy, copying to '%s'\n", short_name.c_str(), path);
 
