@@ -22,7 +22,7 @@ endif(Boost_FOUND)
 find_package(MySQL)
 find_package(BOINC)
 
-if (BOINC_FOUND AND MYSQL_FOUND)
+if (BOINC_SERVER_FOUND AND MYSQL_FOUND)
     include_directories(
         ${BOOST_INCLUDE_DIR}
         ${BOINC_INCLUDE_DIR}
@@ -34,8 +34,12 @@ if (BOINC_FOUND AND MYSQL_FOUND)
         ${MYSQL_INCLUDE_DIR}
         )
 
+    message(STATUS "found boinc and mysql!")
+
     add_definitions( -D_BOINC_ )
-endif (BOINC_FOUND AND MYSQL_FOUND)
+endif (BOINC_SERVER_FOUND AND MYSQL_FOUND)
+
+message (status "BOINC FOUND: ${BOINC_SERVER_FOUND}, MYSQL FOUND: ${MYSQL_FOUND}")
 
 link_directories(${Boost_LIBRARY_DIRS})
 
@@ -45,6 +49,6 @@ if (Boost_FOUND)
     target_link_libraries(undvc_common ${Boost_FILESYSTEM_LIBRARY} ${Boost_SYSTEM_LIBRARY})
 endif (Boost_FOUND)
 
-if (MYSQL_FOUND AND BOINC_FOUND)
-    target_link_libraries(undvc_common ${BOINC_LIBRARIES} ${MYSQL_LIBRARIES})
-endif (MYSQL_FOUND AND BOINC_FOUND)
+if (MYSQL_FOUND AND BOINC_SERVER_FOUND)
+    target_link_libraries(undvc_common ${BOINC_SERVER_LIBRARIES} ${MYSQL_LIBRARIES})
+endif (MYSQL_FOUND AND BOINC_SERVER_FOUND)
