@@ -4,7 +4,7 @@ project (undvc_common)
 set (UNDVC_COMMON_VERSION_MAJOR 0)
 set (UNDVC_COMMON_VERSION_MINOR 1)
  
-set(CMAKE_CXX_FLAGS "-g -Wall -O3 -funroll-loops -ftree-vectorize -msse3")
+#set(CMAKE_CXX_FLAGS "-g -Wall -O3 -funroll-loops -msse3")
 
 set(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} /opt/local/lib)
 

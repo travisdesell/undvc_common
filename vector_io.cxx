@@ -5,6 +5,7 @@
 #include <string>
 
 #include "stdint.h"
+#include "undvc_common/vector_io.hxx"
 
 #include <boost/algorithm/string.hpp>
 
