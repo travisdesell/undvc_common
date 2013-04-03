@@ -15,26 +15,28 @@ FIND_PATH(OpenCV_INCLUDE_DIR opencv.hpp
     /opt/local/include/opencv2
     /usr/local/include/opencv2
     /usr/include/opencv2
+    ~/opencv/include/opencv2
 )
+
 MESSAGE(STATUS "OpenCV include directory: ${OpenCV_INCLUDE_DIR}")
 
 FIND_LIBRARY(OpenCV_CORE_LIBRARY
     NAMES opencv_core
-    PATHS /opt/local/lib/
+    PATHS /opt/local/lib/ ~/opencv/build/lib/
     PATH_SUFFIXES lib
 )
 MESSAGE(STATUS "OpenCV core library: ${OpenCV_CORE_LIBRARY}")
 
 FIND_LIBRARY(OpenCV_HIGH_GUI_LIBRARY
     NAMES opencv_highgui
-    PATHS /opt/local/lib
+    PATHS /opt/local/lib ~/opencv/build/lib/
     PATH_SUFFIXES lib
 )
 MESSAGE(STATUS "OpenCV high gui library: ${OpenCV_HIGH_GUI_LIBRARY}")
 
 FIND_LIBRARY(OpenCV_IMGPROC_LIBRARY
     NAMES opencv_imgproc
-    PATHS /opt/local/lib
+    PATHS /opt/local/lib ~/opencv/build/lib/
     PATH_SUFFIXES lib
 )
 MESSAGE(STATUS "OpenCV imageproc library: ${OpenCV_IMGPROC_LIBRARY}")
