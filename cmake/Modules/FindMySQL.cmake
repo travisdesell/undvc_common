@@ -12,6 +12,7 @@ ENDIF (MYSQL_INCLUDE_DIR)
 
 FIND_PATH(MYSQL_INCLUDE_DIR mysql.h
   /usr/local/include/mysql
+  /usr/share/include/mysql
   /usr/include/mysql
   /usr/local/mysql/include
   /opt/local/include/mysql5/mysql

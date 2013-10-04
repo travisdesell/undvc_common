@@ -39,6 +39,7 @@ if (BOINC_SERVER_FOUND AND MYSQL_FOUND)
     add_definitions( -D_BOINC_ )
 endif (BOINC_SERVER_FOUND AND MYSQL_FOUND)
 
+message (status "BOOST FOUND: ${Boost_FILESYSTEM_LIBRARY} ${Boost_SYSTEM_LIBRARY}")
 message (status "BOINC FOUND: ${BOINC_SERVER_FOUND}, MYSQL FOUND: ${MYSQL_FOUND}")
 
 link_directories(${Boost_LIBRARY_DIRS})
