@@ -12,6 +12,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake/Modules/
 
 SET(Boost_DEBUG 1)
 unset(Boost_INCLUDE_DIR CACHE)
+unset(Boost_INCLUDE_DIRS CACHE)
 unset(Boost_LIBRARY_DIRS CACHE)
 
 
@@ -30,6 +31,7 @@ find_package(BOINC)
 if (BOINC_SERVER_FOUND AND MYSQL_FOUND)
     include_directories(
         ${BOOST_INCLUDE_DIR}
+        ${BOOST_INCLUDE_DIRS}
         ${BOINC_INCLUDE_DIR}
         ${BOINC_INCLUDE_DIR}/api
         ${BOINC_INCLUDE_DIR}/db
